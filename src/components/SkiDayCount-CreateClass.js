@@ -1,13 +1,20 @@
 /**
  * Created by ishi on 1/16/17.
  */
-import {createClass} from 'react'
+import { createClass, PropTypes} from 'react'
 import '../stylesheets/ui.scss'
 import Terrain from 'react-icons/lib/md/terrain'
 import SnowFlake from 'react-icons/lib/ti/weather-snow'
 import Calendar from 'react-icons/lib/fa/calendar'
 
 export const SkiDayCount = createClass ({
+    // prop types use to validate properties.
+    propTypes: {
+        total: PropTypes.number.isRequired,
+        powder: PropTypes.number.isRequired,
+        backcountry: PropTypes.number.isRequired,
+        goal: PropTypes.number.isRequired
+    },
 
     getDefaultProps () {
         return {

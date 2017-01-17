@@ -1,7 +1,7 @@
 /**
  * Created by ishi on 1/16/17.
  */
-import {Component} from 'react'
+import {Component, PropTypes} from 'react'
 import '../stylesheets/ui.scss'
 import Terrain from 'react-icons/lib/md/terrain'
 import SnowFlake from 'react-icons/lib/ti/weather-snow'
@@ -50,4 +50,11 @@ SkiDayCount.defaultProps = {
     powder: 15,
     backcountry: 12,
     goal: 100
+}
+
+SkiDayCount.propTypes = {
+    total: PropTypes.number.isRequired,
+    powder: PropTypes.number.isRequired,
+    backcountry: PropTypes.number.isRequired,
+    goal: PropTypes.number.isRequired
 }

@@ -1,6 +1,7 @@
 /**
  * Created by ishi on 1/16/17.
  */
+import {PropTypes} from 'react'
 import '../stylesheets/ui.scss'
 import Terrain from 'react-icons/lib/md/terrain'
 import SnowFlake from 'react-icons/lib/ti/weather-snow'
@@ -14,7 +15,7 @@ const calcGoalProgress = (total, goal) => {
     return percentToDecimal(total/goal)
 }
 
-export const SkiDayCount = ({total=70, powder=15, backcountry=20, goal=100}) => (
+export const SkiDayCount = ({total, powder, backcountry, goal}) => (
 
     <div className="ski-day-count">
         <div className="total-days">
@@ -37,3 +38,18 @@ export const SkiDayCount = ({total=70, powder=15, backcountry=20, goal=100}) => 
         </div>
     </div>
 )
+
+SkiDayCount.defaultProps = {
+    total: 60,
+    powder: 15,
+    backcountry: 12,
+    goal: 100
+}
+
+
+SkiDayCount.propTypes = {
+    total: PropTypes.number.isRequired,
+    powder: PropTypes.number.isRequired,
+    backcountry: PropTypes.number.isRequired,
+    goal: PropTypes.number.isRequired
+}
