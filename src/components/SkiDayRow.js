@@ -10,7 +10,7 @@ export const SkiDayRow = ({resort, date, backcountry, powder}) => (
 
    <tr>
        <td>
-           {date.getMonth() + 1}/{date.getDate()}/{date.getFullYear()}
+           {date}
        </td>
        <td>
            {resort}
@@ -25,7 +25,7 @@ export const SkiDayRow = ({resort, date, backcountry, powder}) => (
 )
 
 SkiDayRow.propTypes = {
-       date: PropTypes.instanceOf(Date).isRequired,
+       date: PropTypes.string.isRequired,
        resort: PropTypes.string.isRequired,
        powder: PropTypes.bool,
        backcountry: PropTypes.bool

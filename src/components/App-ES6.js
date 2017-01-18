@@ -4,7 +4,6 @@ import { SkiDayCount } from './SkiDayCount'
 import { AddDayForm } from './AddDayForm'
 import { Menu } from './Menu'
 
-
 export class App extends Component {
 
     constructor(props) {
@@ -14,25 +13,24 @@ export class App extends Component {
             allSkiDays: [
                 {
                     resort: 'Squaw Valley',
-                    date: new Date("01/17/2017"),
+                    date: "2016-01-02",
                     powder: true,
                     backcountry: false
-                },
-                {
-                    resort: 'Tahoe Cali',
-                    date: new Date("01/01/2017"),
-                    powder: false,
-                    backcountry: false
-                },
-                {
-                    resort: 'Reno Cali',
-                    date: new Date("01/10/2017"),
-                    powder: false,
-                    backcountry: true
                 }
             ]
         }
 
+        this.addDay = this.addDay.bind(this)
+
+    }
+
+    addDay(newDay) {
+        this.setState({
+            allSkiDays: [
+                ...this.state.allSkiDays,
+                newDay
+            ]
+        })
     }
 
     countDays (filter) {
@@ -48,7 +46,7 @@ export class App extends Component {
                                  powder={this.countDays("powder")}
                                  backcountry={this.countDays("backcountry")}/> :
                     (this.props.location.pathname === "/add-day") ?
-                        <AddDayForm /> :
+                        <AddDayForm onNewDay={this.addDay}/> :
                         <SkiDayList days={this.state.allSkiDays}
                                     filter={ this.props.params.filter}/>
                 }

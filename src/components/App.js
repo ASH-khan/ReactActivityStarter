@@ -12,19 +12,19 @@ export const App = createClass ({
             allSkiDays: [
                 {
                     resort: 'Squaw Valley',
-                    date: new Date("01/17/2017"),
+                    date: new Date("2016-01-02"),
                     powder: true,
                     backcountry: false
                 },
                 {
                     resort: 'Tahoe Cali',
-                    date: new Date("01/01/2017"),
+                    date: new Date("2016-01-02"),
                     powder: false,
                     backcountry: false
                 },
                 {
                     resort: 'Reno Cali',
-                    date: new Date("01/10/2017"),
+                    date: new Date("2016-01-02"),
                     powder: false,
                     backcountry: true
                 }
