@@ -4,37 +4,57 @@
 import terrain from 'react-icons/lib/md/terrain'
 import SnowFlake from 'react-icons/lib/ti/weather-snow'
 import Calendar from 'react-icons/lib/fa/calendar'
-import {SkiDayRow} from './SkiDayRow'
-import {PropTypes} from 'react'
+import { SkiDayRow } from './SkiDayRow'
+import { PropTypes } from 'react'
+import { Link } from 'react-router'
 
-export const SkiDayList = ({days}) => (
+export const SkiDayList = ({days, filter}) => {
+    var filterDays = (!filter || (!filter.match(/powder|backcountry/)) ?
+                     days : days.filter(day => day[filter]));
+    return (
+        <div className="ski-day-list">
+            <table>
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Resort</th>
+                    <th>Powder</th>
+                    <th>Backcountry</th>
+                </tr>
+                <tr>
+                    <td colSpan={4}>
+                        <Link to="/list-days">
+                            All Days
+                        </Link>
+                        <Link to="/list-days/powder">
+                            Powder Days
+                        </Link>
+                        <Link to="/list-days/backcountry">
+                            Backcountry Days
+                        </Link>
+                    </td>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Resort</th>
-                <th>Powder</th>
-                <th>Backcountry</th>
-            </tr>
-        </thead>
-        <tbody>
+                </tr>
+                </thead>
+                <tbody>
 
-            {days.map((day, i) => {
+                {filterDays.map((day, i) => {
                     return <SkiDayRow key={i}
                                       {...day} />
                 })
-            }
-             {/*all this code is replaced by es6 spread operator {...day}*/}
-             {/*resort={day.resort}*/}
-             {/*date={day.date}*/}
-             {/*powder={day.powder}*/}
-             {/*backcountry={day.backcountry}*/}
+                }
+                {/*all this code is replaced by es6 spread operator {...day}*/}
+                {/*resort={day.resort}*/}
+                {/*date={day.date}*/}
+                {/*powder={day.powder}*/}
+                {/*backcountry={day.backcountry}*/}
 
-        </tbody>
-    </table>
+                </tbody>
+            </table>
+        </div>
+    )
 
-)
+}
 
 SkiDayList.propTypes = {
     days: (props) => {
